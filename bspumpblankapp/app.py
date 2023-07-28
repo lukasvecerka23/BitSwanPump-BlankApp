@@ -1,12 +1,15 @@
 import asab.web
 import asab.web.rest
 import bspump
+from pipeline import TCPPipeline
 
 
 class BlankAppApplication(bspump.BSPumpApplication):
 
 	def __init__(self):
 		super().__init__()
+		# Initialize BSPump Service
+		self.BSPumpService = self.get_service("bspump.PumpService")
 
 		# Load the webservice module
 		from asab.web import Module
@@ -20,3 +23,6 @@ class BlankAppApplication(bspump.BSPumpApplication):
 		# Load blank module
 		from .module import BlankModule
 		self.add_module(BlankModule)
+
+		# Register pipeline
+		self.BSPumpService.add_pipeline(TCPPipeline(self, "TCPPipeline"))

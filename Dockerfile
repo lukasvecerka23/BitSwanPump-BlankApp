@@ -1,5 +1,4 @@
-FROM teskalabs/bspump:master-alpine3.8
-MAINTAINER TeskaLabs Ltd (support@teskalabs.com)
+FROM teskalabs/bspump:nightly-py38
 
 # http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
