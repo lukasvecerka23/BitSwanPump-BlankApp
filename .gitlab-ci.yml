@@ -1,0 +1,24 @@
+stages:
+  - test
+  - build
+
+test black:
+  stage: test
+  image: python:3.10-slim
+
+  tags: 
+    - docker
+
+  script:
+    - apt-get update
+    - pip install --upgrade pip
+    - pip install -r requirements-dev.txt
+    - black --check .
+    - ruff check .
+
+variables:
+  DOCKER_IMAGE: <name>
+
+include:
+  - project: 'LibertyAces/Product/bitswanmonorepo'
+    file: 'cicd/docker-build.yml'

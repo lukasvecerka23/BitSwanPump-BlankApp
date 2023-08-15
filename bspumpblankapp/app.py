@@ -1,7 +1,7 @@
 import asab.web
 import asab.web.rest
 import bspump
-from pipeline import TCPPipeline
+from .pipelines import TCPPipeline
 
 
 class BlankAppApplication(bspump.BSPumpApplication):
